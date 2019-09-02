@@ -1,0 +1,18 @@
+<div class="bg-primary text-white m-2 p-1">
+    Ürün sayısı {{model.getProducts().length}}
+</div>
+<div>
+    interpolation
+    <h2>{{product.name}}</h2>
+    <img src="assets/img/{{product.imageUrl}}" >
+
+    One Way Binding
+    <!-- [property] = "expression"  köşeli paramateler directifleri arar o isimde directive yok ise dom özelliklerini arar-->
+    <h2 [textContent]="product.name"></h2>
+    <img [src]="'assets/img/'+product.imageUrl" >
+
+
+    Event Binding
+
+    Two Way Binding
+</div>
