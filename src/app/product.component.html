@@ -3,16 +3,51 @@
 </div>
 <div>
     interpolation
-    <h2>{{product.name}}</h2>
-    <img src="assets/img/{{product.imageUrl}}" >
+    <h4>{{product.name}}</h4>
+    <img src="assets/img/{{product.imageUrl}}" height="50">
 
     One Way Binding
-    <!-- [property] = "expression"  köşeli paramateler directifleri arar o isimde directive yok ise dom özelliklerini arar-->
-    <h2 [textContent]="product.name"></h2>
-    <img [src]="'assets/img/'+product.imageUrl" >
+    <!-- [property]="expression" köşeli paramateler directifleri arar o isimde directive yok ise dom özelliklerini arar-->
+    <h4 [textContent]="product.name"></h4>
+    <img [src]="'assets/img/'+product.imageUrl" height="50">
+
+    <!--[class] ile özellik atanınca eski özellikler kaybolur.-->
+    <div class="text-white" [class]="getClasses(1)">
+        katalogdaki ilk ürün {{model.getProductById(1).name}}
+    </div>
+
+    <!--[ngClass] ile özellik atanınca eski özellikleri tanır.-->
+    <div class="text-white" [ngClass]="getClasses(1)">
+        katalogdaki ilk ürün {{model.getProductById(1).name}}
+    </div>
 
 
-    Event Binding
+    <div [class]="getClasses(2)">
+        katalogdaki
+        <span [style.color]="color"> ikinci </span>
+        <span [style.fontSize]="fontSize"> ürün</span>
+        {{model.getProductById(2).name}}
+    </div>
 
-    Two Way Binding
+    <button class="btn btn-primary" [class.disabled]="v_disabled">Submit</button>
+ 
+    <div class="p-2 m-2">
+        Event Binding
+        <br>
+        <input type="text" (keyup)="onKeyUp($event)">
+        <br>
+        <input type="text" (keyup.enter)="onKeyUp2($event)">
+        <br>
+        <input #email type="text" (keyup.enter)="onKeyUp3(email.value)">
+        <br>
+        <button (click)="onSubmit($event)">Button</button>
+    </div>
+    <div>
+        Two Way Binding
+
+        <input  [value]="mail" (keyup.enter)="mail=$event.target.value; onKeyUp4()">
+
+        <input  [(ngModel)]="mail" (keyup.enter)="onKeyUp4()">
+    </div>
+
 </div>

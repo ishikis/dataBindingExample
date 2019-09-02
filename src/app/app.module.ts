@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ProductComponent } from './product.componen';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -8,7 +9,8 @@ import { ProductComponent } from './product.componen';
     ProductComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule 
   ],
   providers: [],
   bootstrap: [ProductComponent]
